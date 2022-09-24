@@ -8,18 +8,18 @@ NDT-CE USPE DB is a basic database scheme for organizing ultrasonic (US) data in
 Only the bare minimum of tables are used. This scheme can easily be expanded to include metadata such as structural plans, inspection reports, images, operator information, and structure information about the test object in the data management system.
 
 A total of four tables connect TestEquipment, TestArea, TestSeries, and TestData. Each table is briefly described below:
+<ul>
+	<li><b>TestData</b> describes a single AScan with positions (X/Y) for US-Transmitter and -Receiver on the TestArea and a reference to where to find the corresponding raw data file. TestData is stored in table USPEData.
 
-TestData describes a single AScan with positions (X/Y) for US-Transmitter and -Receiver on the TestArea and a reference to where to find the corresponding raw data file. TestData is stored in table USPEData.
+<li><b>TestSeries</b> is a collection of TestData entries with the same TestEquipment, the same settings in the device, and the same TestArea. For example, a single test with the MIRA-A1040 produces 66 Ascans, and therefore 66 entries in TestData. The user can freely decide which individual test should be included in a selected TestSeries.  
 
-TestSeries is a collection of TestData entries with the same TestEquipment, the same settings in the device, and the same TestArea. For example, a single test with the MIRA-A1040 produces 66 Ascans, and therefore 66 entries in TestData. The user can freely decide which individual test should be included in a selected TestSeries.  
+<li><b>TestArea</b> is a rectangular area where the tests are collected. The coordinate system for each TestArea is cartesian with Z pointing into the test object (on a vertical TestArea: X horizontal and Y vertical). 
 
-TestArea is a rectangular area where the tests are collected. The coordinate system for each TestArea is cartesian with Z pointing into the test object (on a vertical TestArea: X horizontal and Y vertical). 
-
-TestEquipment holds a description of the test device. The DeviceInfo column in this table holds the geometric information of the device as well as data format and device settings. The user can freely decide to have individual entries in this table with selected settings or provide individual settings for each TestSeries.
-
+<li><b>TestEquipment</b> holds a description of the test device. The DeviceInfo column in this table holds the geometric information of the device as well as data format and device settings. The user can freely decide to have individual entries in this table with selected settings or provide individual settings for each TestSeries.
+</ul>
 
 Raw data files - as created by the device - may be organized in a directory structure which supports reference to the organization in the DB. However, any other structure is possible with minor code changes.
- 
+<pre>
 <DATA> e.g. USPEDATA 					root dir for raw data files
  |
  |_________________________    ...    ______________
@@ -29,10 +29,12 @@ TA001            TA002 				 TAnnn 			TestArea
  |     |           |     |     |                    |      |      |
 TS<n> TS<n>       TS<n> TS<n> TS<n>                TS<n>  TS<n>  TS<n>	TestSeries
 
-
-(installation of MySQL and user)
+</pre>
+<h3>Installation of MySQL</h3>
+installation of MySQL and user
 Table definition and information in CreateExampleDB.sql
-Scripts
+
+<h4>Scripts</h4>
 Tools are included to upload the data collected with ACS A1020 and ACS A1040MIRA Ultrasonic Equipment.
 Upon uploading the data, the position of each transducer and receiver in the TestArea is calculated from the Map data (user supplied and/or as defined in datafiles).
 
@@ -44,7 +46,7 @@ SQL and Shell scripts are provided for demonstration and simplicity (just bash/P
 
 Raw data files created by the test device are only referenced in the database. Renaming/moving data files will destroy the reference in the DB.
 
-Test Requirements
+<h4>Test Requirements</h4>
 It is necessary to define a coordinate system for the test device to enable a correct transformation of each AScan into the TestArea.
 
 TestEquipment orientation for MIRA is pNDT-CE USPE DB
