@@ -59,12 +59,12 @@ TestEquipment orientation for MIRA is parallel to X. The equipment axis goes fro
 For A1020, the sensor (e.g., M2502) has 12 transmitting DPC transducers next to the connector cables. The instrument axis goes from the connectors along the long side of the sensor housing. TestPoint is the center of the sensor housing.  
 
 Data should be collected in the Map mode, and raw data files named using the format below:
- 
+<pre>
 <col>[_-]<row>.<ext>
 
 eg 	A1220: 		12_3.raw
 	A1040_MIRA:		3-4.lbv
-
+</pre>
 Filenames which do not satisfy this template will be assigned 1/1 for col/row as default.
 
 The test Map - a rectangular evenly spaced grid - must be oriented parallel to the TestArea axes (<col> || X and <row> || Y) 
