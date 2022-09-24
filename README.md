@@ -7,9 +7,10 @@ Minimalist Database for UltraSound Pulse Echo Data collected with ACS equipment
 NDT-CE USPE DB is a basic database scheme for organizing ultrasonic (US) data in a MySQL database. This Data Management tool enables the user to establish reliable relations between a test, its location in a test area, the test device, and its setting while having the power of a SQL DB to retrieve, search, select, and organize data collected in projects. 
 Only the bare minimum of tables are used. This scheme can easily be expanded to include metadata such as structural plans, inspection reports, images, operator information, and structure information about the test object in the data management system.
 
+<h4>DataBase Tables</h4>
 A total of four tables connect TestEquipment, TestArea, TestSeries, and TestData. Each table is briefly described below:
 <ul>
-	<li><b>TestData</b> describes a single AScan with positions (X/Y) for US-Transmitter and -Receiver on the TestArea and a reference to where to find the corresponding raw data file. TestData is stored in table USPEData.
+<li><b>TestData</b> describes a single AScan with positions (X/Y) for US-Transmitter and -Receiver on the TestArea and a reference to where to find the corresponding raw data file. TestData is stored in table USPEData.
 
 <li><b>TestSeries</b> is a collection of TestData entries with the same TestEquipment, the same settings in the device, and the same TestArea. For example, a single test with the MIRA-A1040 produces 66 Ascans, and therefore 66 entries in TestData. The user can freely decide which individual test should be included in a selected TestSeries.  
 
@@ -32,9 +33,15 @@ TS<n> TS<n>       TS<n> TS<n> TS<n>                TS<n>  TS<n>  TS<n>	TestSerie
 </pre>
 <h3>Installation of MySQL</h3>
 installation of MySQL and user
+<h3>Working with the DataBase</h3>
+<h4>Scripts</h4>
+All script should be run from the &lt;InstallationPath&gt;/SHELL (Linux) or &lt;InstallPath&gt;/PSHELL
+
+<h4>Setting up Tables insert Sample Data</h4>
 Table definition and information in CreateExampleDB.sql
 
-<h4>Scripts</h4>
+
+
 Tools are included to upload the data collected with 
 <a href="acs-international.com/product/a1220-monolith-classic"ACS A1020</a> 
 and 
