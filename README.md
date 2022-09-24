@@ -60,9 +60,9 @@ For A1020, the sensor (e.g., M2502) has 12 transmitting DPC transducers next to 
 
 Data should be collected in the Map mode, and raw data files named using the format below:
 <pre>
-&gt;col>[_-]<row>.<ext>
+&lt;col&gt;[_-]&lt;row&gt;.&lt;ext&gt;
 
-eg 	A1220: 		12_3.raw
+eg 	A1220: 			12_3.raw
 	A1040_MIRA:		3-4.lbv
 </pre>
 Filenames which do not satisfy this template will be assigned 1/1 for col/row as default.
