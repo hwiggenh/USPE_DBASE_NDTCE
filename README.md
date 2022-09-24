@@ -69,7 +69,7 @@ Filenames which do not satisfy this template will be assigned 1/1 for col/row as
 
 The test Map - a rectangular evenly spaced grid - must be oriented parallel to the TestArea axes (<col> || X and <row> || Y) 
 
-The TestArea should be large enough to contain all tests (test positions outside the TestArea will not be included in the TestArea plot).
+The TestArea should be large enough to contain all tests (test positions outside the TestArea will be correctly be entered in the DB but not be included in the TestArea plot).
 
 The First Map position (1/1) has coordinates (X0/Y0) in the TestArea and must be provided upon upload of data into DB.
 <pre>
