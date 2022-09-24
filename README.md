@@ -73,7 +73,7 @@ The TestArea should be large enough to contain all tests (test positions outside
 
 The First Map position (1/1) has coordinates (X0/Y0) in the TestArea and must be provided upon upload of data into DB.
 <p>
-<div style="width:100%;text-align:center;padding:20px;"> <img src="https://docs.google.com/drawings/d/e/2PACX-1vSvtgk2s8zqrlbdI1Eq1ShiIrzWiO8C68xmmtMxmh4VwoHV0qpficQOWygma535_fSiBbqExPbHLgQL/pub?w=455&amp;h=291" alt="TestArea with grid positions" ></div>
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vSvtgk2s8zqrlbdI1Eq1ShiIrzWiO8C68xmmtMxmh4VwoHV0qpficQOWygma535_fSiBbqExPbHLgQL/pub?w=455&amp;h=291" alt="TestArea with grid positions">
 
 
 <h4>System Requirements</h4>
