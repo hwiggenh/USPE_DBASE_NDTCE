@@ -72,6 +72,8 @@ The test Map - a rectangular evenly spaced grid - must be oriented parallel to t
 The TestArea should be large enough to contain all tests (test positions outside the TestArea will be correctly be entered in the DB but not be included in the TestArea plot).
 
 The First Map position (1/1) has coordinates (X0/Y0) in the TestArea and must be provided upon upload of data into DB.
+
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vSvtgk2s8zqrlbdI1Eq1ShiIrzWiO8C68xmmtMxmh4VwoHV0qpficQOWygma535_fSiBbqExPbHLgQL/pub?w=455&h=291) alt="TestArea with grid positions" width="500" height="600">
 <pre>
 
   	 <--- X0 -->
