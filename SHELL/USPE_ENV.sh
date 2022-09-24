@@ -22,12 +22,12 @@
 export DATADIR="$HOME/code/USPE_DBASE_NDTCE/DATA"
 
 # sql connect string
-SQLUSER="USPEuser"			# user for USPE
+SQLUSER="uspeuser"			# user for USPE
 SQLPW="NDT-CEDB"			# password
 SQLPORT=3306				# port 				default 3306
-SQLHOST="Brix-Herb"			# mysql host		default localhost
-SQLDB="USPE"				# database name		default none
-SQLPROMPT="USPE\>\ "			# db prompt			
+SQLHOST="db4free"			# mysql host		default localhost
+SQLDB="uspe"				# database name		default none
+SQLPROMPT="uspe\>\ "			# db prompt			
 
 alias my_sql="mysql -u ${SQLUSER} -p$SQLPW -h ${SQLHOST} --port $SQLPORT --prompt $SQLPROMPT $SQLDB"
 
