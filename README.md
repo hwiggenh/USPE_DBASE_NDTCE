@@ -1,5 +1,5 @@
 # USPE_DBASE_NDTCE
-Minimlist Database for UltraSound Pulse Echo Data collected with ACS equipment
+Minimalist Database for UltraSound Pulse Echo Data collected with ACS equipment
 
 <b><i>Non Destructive Testing in Civil Engineering UltraSound Pulse Echo DataBase</i></b>
 
@@ -122,12 +122,8 @@ using X0/Y0 as XMAP0/YMAP0 and - for A1220 - dX/dY as XMAPINC/YMAPINC
 run UploadMIRA.sh/UploadA1220.sh with parametersMAPINC TAID TSID to create entries in USPEData table.
 </ol>
 </ol>
-<h4>DONE.</h4>
-
-
-
+<b>DONE.</b>
 
 <h3>Queries:</h3>
-
-example queries …. tba
+File SQL/Queries.sql contains 10 example queries for the database.
 
