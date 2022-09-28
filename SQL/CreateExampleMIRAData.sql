@@ -18,7 +18,7 @@
  WARRANTY:		none -- absolutely no warranty - use at your own risk  
  REVISION:  	2022-08-23 initial draft 
 ======================================================================== */
-use USPE;
+# use uspedb;
 -- Filename must have format <Rowindex>_<ColumnIndex>.raw
 -- map is defined in TestSeries
 -- TestSeriesID, TestAreaID, Filename, Filepath,TimeStamp (modtime of file) are passed from calling program
@@ -35,14 +35,12 @@ set @PIT  =    (select ifnull(json_extract(DeviceInfo,"$.GeomInfo.Pitch"),60) fr
 -- map raster orientation relative to TestArea: Xindex || X Yindex || Y, defaults to 100,100
 set @XMAP0 =   (select ifnull(json_extract(Setting,"$.MAP.XMAP0"),100) from TestSeries where ID=@TSID);
 set @YMAP0 =   (select ifnull(json_extract(Setting,"$.MAP.YMAP0"),100) from TestSeries where ID=@TSID);
--- set @XMAP0 =   (ifnull(@XMAP0,100));	-- values could still be null when record does not exist
--- set @YMAP0 =   (ifnull(@YMAP0,120));
 
 -- map increment X,Y TestSeries.Setting.$.MAP.XMAPINC, ...YMAPINC, defaults to in 50,80 
 set @XMAPINC = (select ifnull(json_extract(Setting,"$.MAP.XMAPINC"),50) from TestSeries where ID=@TSID);
 set @YMAPINC = (select ifnull(json_extract(Setting,"$.MAP.YMAPINC"),80) from TestSeries where ID=@TSID);
--- set @XMAPINC =   (ifnull(@XMAPINC,50));
--- set @YMAPINC =   (ifnull(@YMAPINC,80));
+
+
 
 -- include FileName and FilePath
 set @FileInfo = '{"FileType":"A1040_MIRA"}';    -- no spaces in FileType Variable-query return splits on spaces

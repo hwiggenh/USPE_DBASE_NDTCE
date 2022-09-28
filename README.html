@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'  lang='en'>
+        <title>Crack</title>
+        <!-- Link to the CSS stylesheet and favicon -->
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <link rel='stylesheet' href='/home/herotto/code/CRACK/WEB/CSS/crack.css'>
+
+        <!-- Also link to some fonts hosted by Google -->
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'>
+        <!-- load the javascript functions -->
+    </head>
+
+<body style="padding:30px">
+
 # USPE_DBASE_NDTCE
 <H2>Demonstration Database for UltraSound Pulse Echo Data</H2>
 
@@ -84,11 +100,12 @@ Three options for utilizing MySQL:
 <li>Local MySQL Installation: <br>MySQL (owned by Oracle) can be downloaded for free from <a href="https://www.mysql.com/downloads/" target="_blank">MySQL Download</a>.<br>Please follow the instructions on how to install the system on your computer
 
 <li>Utilize existing MySQL Installation
-<br>Any exisiting MySQL installation can be utilized for this project. You need to be able to create or utilize a user with appropriate rights 
+<br>Any exisiting MySQL installation can be utilized for this project. However, a SQL client must be installed to access a remote installation .
+<br>You need to be able to create or utilize a user with appropriate rights.
 <br>MySQL client should be installed on your loacal computer
 <li>Utilize Cloud MySQL service<BR> <a href="https://db4free.nett/index.php?language=en"  target="_blank">db4free</a> provides a free testing service for MySQL which can be used for this project without the necessity to install MySQL. <br><b>This service is not for production</b><br>To use this service you must sign up and create a DB, and just follow the instructions. The DB will be setup within a few minutes.
 <br>A DB named &lt;uspedb&gt; and a user &lt;dbname&gt; are being defined while creating the DB within db4free
-<br>MySQL client should be installed on your loacal computer
+<br>MySQL client should be installed on your local computer.
 </ul>
 <P><b>Configure MySQL</b>
 <br>Access configuration is documented in the file <i>USPE_ENV.sh</i>. Please follow the SQLConnect instructions in this file.
@@ -166,6 +183,7 @@ Scripts are provided for demonstration of basic DB operations, using shell and S
 	<br>Creates SVG plot with all test positions in <i>TestArea</i> identified by <i>TestArea.ID</i>
 <li>Display <i>TestSeries</i>:  call <b>GetAndShowTestPosition.sh</b>
 	<br>Creates SVG plot of <i>TestArea</i> with test positions identified by <i>USPEData.TestSeriesID</i> 
+	<br>Plos in white the Map grid
 <li>Display USData on <i>TestArea</i>: calls <b>GetAndShowTestPosition.sh</b>
 	<br>Creates SVG plot of <i>TestArea</i> with call test positions of AScan identified by <i>USPEData.ID</i>
 </ul>
@@ -207,4 +225,5 @@ run UploadMIRA.sh/UploadA1220.sh with parameters TAID TSID to create entries in 
 
 <h3>Queries:</h3>
 File SQL/Queries.sql contains 10 example queries for the database.
-
+</body>
+</html>

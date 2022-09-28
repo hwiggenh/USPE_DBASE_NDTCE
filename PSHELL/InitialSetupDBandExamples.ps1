@@ -68,11 +68,10 @@ mkdir $DBDATA/TA002
 # define TestSeries #1 and #2
 mysql --defaults-group-suffix=7 USPE -e "source  ../SQL/CreateExampleTestSeries.sql"	
 # [[ $? -ne 0 ]] && echo "Error in CreateExampleTestSeries.sql" && exit
-mkdir $DBDATA/TA001/TS001
-mkdir $DBDATA/TA002/TS002
 
 
 # upload usdata short line scan MIRA
+mkdir $DBDATA/TA002/TS002
 $TAID=2;
 $TSID=2;
 . ./UploadMIRA.ps1 
@@ -83,6 +82,8 @@ $USPEID=35;
 ReadAScan $USPEID
 
 # upload usdata small area scan A1220 upload requires two parameters TAID and TSID
+mkdir $DBDATA/TA001/TS001
+cp $DBDATA/RAW/A1220/*.raw $DBDATA/TA001/TS001/
 $TAID=1;
 $TSID=1
 . ./UploadA1220.ps1 

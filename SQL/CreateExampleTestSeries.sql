@@ -7,7 +7,7 @@
 -- August 2022 - H. Wiggenhauser
 --
 -- 
-use USPE;
+# use uspedb;
 
 # A1220 TestSeries
 set @Name = "Example A1220 Point Test";

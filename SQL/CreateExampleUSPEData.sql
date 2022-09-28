@@ -18,7 +18,7 @@
  WARRANTY:		none -- absolutely no warranty - use at your own risk  
  REVISION:  	2022-08-23 initial draft 
 ======================================================================== */
-use USPE;
+# use uspedb;
 
 -- Filename must have format <Rowindex>_<ColumnIndex>.raw
 -- map is defined in TestSeries

@@ -33,12 +33,12 @@ source ./USPE_ENV.sh
 
 # create DB from scratch
 
-# create user USPEuser with create insert delete 
-# CREATE USER 'USPEuser'@'%' IDENTIFIED BY 'NDT-CEDB';
-# GRANT ALL PRIVILEGES ON USPE .* TO 'USPEuser'@'%';
-# GRANT SYSTEM_USER ON *.* TO 'USPEuser'@'%';
+# create user uspeuser with create insert delete 
+# CREATE USER 'uspeuser'@'%' IDENTIFIED BY 'NDT-CEDB';
+# GRANT ALL PRIVILEGES ON USPE .* TO 'uspeuser'@'%';
+# GRANT SYSTEM_USER ON *.* TO 'uspeuser'@'%';
 # FLUSH PRIVILEGES;
-# SHOW GRANTS FOR 'USPEuser'@'%';
+# SHOW GRANTS FOR 'uspeuser'@'%';
 
 # create tables
 my_sql < ../SQL/CreateExampleDB.sql				
@@ -61,10 +61,11 @@ mkdir $DATADIR/TA002
 # define TestSeries #1 and #2
 my_sql  < ../SQL/CreateExampleTestSeries.sql	
 [[ $? -ne 0 ]] && echo "Error in CreateExampleTestSeries.sql" && exit
-mkdir $DATADIR/TA001/TS001
-mkdir $DATADIR/TA002/TS002
 
 # upload usdata short line scan MIRA
+mkdir $DATADIR/TA002/TS002
+# copy data to dir
+cp $DATADIR/RAW/A1040/*.lbv $DATADIR/TA002/TS002/
 TAID=2;
 TSID=2;
 UploadMIRA.sh $TAID $TSID
@@ -72,6 +73,9 @@ USPEID=35;
 ReadAScan.sh $USPEID
 
 # upload usdata small area scan A1220 upload requires two parameters TAID and TSID
+mkdir $DATADIR/TA001/TS001
+# copy data to dir
+cp $DATADIR/RAW/A1020/*.raw $DATADIR/TA001/TS001/
 TAID=1;
 TSID=1
 UploadA1220.sh $TAID $TSID

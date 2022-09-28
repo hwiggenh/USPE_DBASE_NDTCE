@@ -7,7 +7,7 @@
 -- August 2022 - H. Wiggenhauser
 --
 -- 
-use USPE;
+# use uspedb;
 
 set @Name = "TestArea #1 Example";
 set @Description = "TestArea Definiton Example #1";

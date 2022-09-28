@@ -14,7 +14,7 @@
 -- Setings: 	instrument settings during test
 
 
-use USPE;
+# use uspedb;
 
 delete from TestEquipment where ID >= 0;
 -- ACS A1220 ==================================================================

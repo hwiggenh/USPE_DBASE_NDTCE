@@ -16,18 +16,22 @@
 # WARRANTY:		none -- absolutely no warranty - use at your own risk  
 # REVISION:  	2022-08-23 initial draft 
 # ========================================================================
-# set env variables for USPE_DB
 
 # DATADIR is root for raw files directory tree
 export DATADIR="$HOME/code/USPE_DBASE_NDTCE/DATA"
 
-# sql connect string
-SQLUSER="uspeuser"			# user for USPE
-SQLPW="NDT-CEDB"			# password
-SQLPORT=3306				# port 				default 3306
-SQLHOST="db4free"			# mysql host		default localhost
-SQLDB="uspe"				# database name		default none
-SQLPROMPT="uspe\>\ "			# db prompt			
+# MySQL connect 
+# substitute your definitions for the 6 variables
+SQLUSER="uspeuser"			# user for USPE		use your username
+SQLPW="NDT-CEDB"			# password			use your password for DB 
+SQLDB="uspedb"				# DB name			use your DBname
+SQLPORT=3306				# port 				typ. 3306 
+SQLHOST="db4free.net"		# mysql host		for local installation use "localhost"
+SQLPROMPT="uspe\>\ "		# db prompt			sets the prompt when access DB interactively	
 
+
+shopt -s expand_aliases		# allows to set alias from bash script
+							# create an alias for mysql access
+							# alternatively, you may use ~/.my.cnf  
 alias my_sql="mysql -u ${SQLUSER} -p$SQLPW -h ${SQLHOST} --port $SQLPORT --prompt $SQLPROMPT $SQLDB"
 

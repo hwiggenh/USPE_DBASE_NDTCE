@@ -7,14 +7,14 @@
 -- August 2022 - H. Wiggenhauser
 --
 
-create database if not exists USPE;
-use USPE;
+create database if not exists uspedb;
+use uspedb;
 
 SET FOREIGN_KEY_CHECKS = 0; 		-- needed when database already exists
 
 -- table TestEquipment gives every Unit an unique number
-drop table if exists USPE.TestEquipment;
-create table if not exists USPE.TestEquipment (
+drop table if exists uspedb.TestEquipment;
+create table if not exists uspedb.TestEquipment (
 	ID				int UNSIGNED	NOT NULL PRIMARY KEY AUTO_INCREMENT, 	-- unique number used as reference
 	Name			varchar(50)		NOT NULL DEFAULT 'NoName',				-- free text
 	Model			varchar(500)	not null default 'NoModel',				-- free text
@@ -23,8 +23,8 @@ create table if not exists USPE.TestEquipment (
 );
 
 -- table testarea describes a rectangular area on which the measurmenets are taken
-drop table if exists USPE.TestArea;
-create table if not exists USPE.TestArea (
+drop table if exists uspedb.TestArea;
+create table if not exists uspedb.TestArea (
 	ID				int UNSIGNED		NOT NULL PRIMARY KEY AUTO_INCREMENT,	-- unique number, used as reference
 	Name			varchar(50)			NOT NULL default 'NoName',				-- free text
 	Description		Varchar(256)		not null default 'NoDescription',		-- free text
@@ -35,12 +35,12 @@ create table if not exists USPE.TestArea (
 );
 
 -- TestSeries hold collections of AScans on the SAME testArea and SAME TestEquipment Settings
-drop table if exists USPE.TestSeries;
-create table if not exists USPE.TestSeries (
+drop table if exists uspedb.TestSeries;
+create table if not exists uspedb.TestSeries (
 	ID				INT UNSIGNED	NOT NULL PRIMARY KEY AUTO_INCREMENT,		-- unique number, used as reference
 	Name			VARCHAR(100)    NOT NULL Default " ",						-- free text
-	TestAreaID		INT UNSIGNED	NOT NULL, FOREIGN KEY (TestAreaID) REFERENCES USPE.TestArea(ID) on delete cascade,	-- reference to TestArea
-	TestEquipmentID	INT UNSIGNED	NOT NULL, FOREIGN KEY (TestEquipmentID) REFERENCES USPE.TestEquipment(ID) on delete cascade, -- reference to TestEquipment
+	TestAreaID		INT UNSIGNED	NOT NULL, FOREIGN KEY (TestAreaID) REFERENCES uspedb.TestArea(ID) on delete cascade,	-- reference to TestArea
+	TestEquipmentID	INT UNSIGNED	NOT NULL, FOREIGN KEY (TestEquipmentID) REFERENCES uspedb.TestEquipment(ID) on delete cascade, -- reference to TestEquipment
 	Setting			json			not null,					-- json data describing the instrument and map settings
 	Notes			varchar(1000) 	NOT NULL Default ''			-- free text
 );
@@ -48,11 +48,11 @@ create table if not exists USPE.TestSeries (
 create index idxTestAreaID on TestSeries(TestAreaID);			
 create index idxTestEquipmentID on TestSeries(TestEquipmentID);
 
--- USPE_Data holds description of individual AScans
-drop table if exists USPE.USPEData;
-create table if not exists USPE.USPEData (
+-- uspedb_Data holds description of individual AScans
+drop table if exists uspedb.USPEData;
+create table if not exists uspedb.USPEData (
 	ID				INT UNSIGNED		NOT NULL PRIMARY KEY AUTO_INCREMENT,		-- unique number
-	TestSeriesID	INT UNSIGNED		NOT NULL, FOREIGN KEY (TestSeriesID) REFERENCES USPE.TestSeries(ID) on delete cascade, -- reference to TestSeries
+	TestSeriesID	INT UNSIGNED		NOT NULL, FOREIGN KEY (TestSeriesID) REFERENCES uspedb.TestSeries(ID) on delete cascade, -- reference to TestSeries
 	TimeStamp		TIMESTAMP			not null default CURRENT_TIMESTAMP,			-- timestamp for time of test
 	TX				int 				not NULL default 0,							-- x-position of transmitter
 	TY				int 				not NULL default 0,							-- y-position of transmitter

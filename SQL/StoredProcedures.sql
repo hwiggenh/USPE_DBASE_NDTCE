@@ -17,7 +17,7 @@
  REVISION:  	2022-08-23 initial draft 
 ======================================================================== */
 
-use USPE;
+use uspedb;
 
 drop procedure if exists MiraSensor;
 DELIMITER //  
