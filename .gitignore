@@ -1,9 +1,9 @@
-# ignore KoKo executables
+# ignore some files and dirs
 ./README.html
 ./HeaderTemplate.txt
 ./makefile
-DATA/TA*
+./DATA/TA*
 ./SHELL/obsolete
-./SHELL/git
+./SHELL/git/*
 ./.gitignore
 

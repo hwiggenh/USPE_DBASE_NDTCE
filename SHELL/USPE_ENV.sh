@@ -18,7 +18,7 @@
 # ========================================================================
 
 # DATADIR is root for raw files directory tree
-export DATADIR=$(pwd)
+export DATADIR=$(pwd)/../DATA
 
 # MySQL connect 
 # substitute your definitions for the 6 variables
