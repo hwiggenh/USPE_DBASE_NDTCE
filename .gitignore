@@ -1,8 +1,9 @@
 # ignore KoKo executables
-README.html
-HeaderTemplate.txt
-makefile
+./README.html
+./HeaderTemplate.txt
+./makefile
 DATA/TA*
-SHELL/obsolete
-SHELL/git
+./SHELL/obsolete
+./SHELL/git
+./.gitignore
 

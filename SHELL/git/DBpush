@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# push CRACK to git
+#
+DBROOT="/home/herotto/code/USPE_DBASE_NDTCE"
+cd $DBROOT
+
+echo -n "Enter Commit Message [ENTER]: "
+read COMMITMESSAGE
+echo "Commit Message: $COMMITMESSAGE"
+#
+#git -C $DBROOT	# this sets the repository to CODA
+#
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa_github
+#
+## commit all changes
+#
+git -C $DBROOOT remote set-url origin git@github.com:hwiggenh/USPE_DBASE_NDTCE.git
+
+git -C $DBROOT add .
+git -C $DBROOT commit -am "$COMMITMESSAGE"
+# 
+git -C $DBROOT push origin main
+#
+echo "D O N E"
+

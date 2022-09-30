@@ -18,7 +18,7 @@
 # ========================================================================
 
 # DATADIR is root for raw files directory tree
-export DATADIR="$HOME/code/USPE_DBASE_NDTCE/DATA"
+export DATADIR=$(pwd)
 
 # MySQL connect 
 # substitute your definitions for the 6 variables
@@ -34,4 +34,4 @@ shopt -s expand_aliases		# allows to set alias from bash script
 							# create an alias for mysql access
 							# alternatively, you may use ~/.my.cnf  
 alias my_sql="mysql -u ${SQLUSER} -p$SQLPW -h ${SQLHOST} --port $SQLPORT --prompt $SQLPROMPT $SQLDB"
-
+ 

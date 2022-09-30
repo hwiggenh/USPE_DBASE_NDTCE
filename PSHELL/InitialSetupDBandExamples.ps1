@@ -69,7 +69,6 @@ mkdir $DBDATA/TA002
 mysql --defaults-group-suffix=7 USPE -e "source  ../SQL/CreateExampleTestSeries.sql"	
 # [[ $? -ne 0 ]] && echo "Error in CreateExampleTestSeries.sql" && exit
 
-
 # upload usdata short line scan MIRA
 mkdir $DBDATA/TA002/TS002
 $TAID=2;

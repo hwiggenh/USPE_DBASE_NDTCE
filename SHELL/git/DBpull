@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# pull CRACK from git
+#
+DBROOT="/home/herotto/code/USPE_DBASE_NDTCE"
+#
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa_github
+#
+git -C $DBROOT remote set-url origin git@github.com:hwiggenh/USPE_DBASE_NDTCE.git
+# 
+git -C $DBROOT pull origin main
+#
+echo "D O N E"
+
