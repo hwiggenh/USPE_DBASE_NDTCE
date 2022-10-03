@@ -73,7 +73,7 @@ SQL="insert into TestEquipment values (NULL,\"$Name\",\"$Model\",'$DeviceInfo', 
 
 echo $SQL
 	
-RET=$(mysql --defaults-group-suffix=7 USPE -s -e "$SQL")	# call mysql DB USPE 
+RET=$(my_sql -s -e "$SQL")	# call mysql DB USPE 
 [[ $? -ne 0 ]] && echo "Error in query $SQL" && exit		# check error on call
 
 exit

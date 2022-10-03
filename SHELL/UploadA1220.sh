@@ -33,7 +33,7 @@ TSD=$(printf "TS%03d" $2);
 for fn in $DATADIR/$TAD/$TSD/*.raw;					# loop through files in dir
 do
 	TS=$(date -r $fn '+%Y-%m-%d %H:%M:%S')  		# modtime of file fn
-	mysql --defaults-group-suffix=7 USPE -e "set @TSID=1;set @TEID=1;\
+	my_sql -e "set @TSID=1;set @TEID=1;\
 			set @FN=\"$(basename $fn)\";\
 			set @FP=\"${fn%/*}\"; \
 			set @TSID=\"${2}\"; \

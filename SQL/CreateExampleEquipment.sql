@@ -109,7 +109,7 @@ set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");
 
 insert into TestEquipment values (NULL,"MIRA","ACS Model A1040 Serial#XXXXX Inv#XXXX Purchased: 2022 Owner:John Doe",@DF,@Notes);
 
-
+/* uncomment to include Mira3D ==================================
 -- "MIRA3D_LINEAR"   ================================================================== 
 set @BD ='	"BinData": {
 		"Order": "BEF",
@@ -281,5 +281,5 @@ set @Notes = "ACS MIRA3DPro Matrix Example; Manual Location: Shelf B; Last calib
 set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");
 
 insert into TestEquipment values (NULL,"MIRA3DPro Matrix","ACS Model MIRA3DPro Matrix Serial#XXXXX Inv#XXXX Purchased: 2022 Owner:John Doe",@DF,@Notes);
-
+*/
 quit

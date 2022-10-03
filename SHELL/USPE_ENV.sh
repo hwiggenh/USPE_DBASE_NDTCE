@@ -18,7 +18,7 @@
 # ========================================================================
 
 # DATADIR is root for raw files directory tree
-export DATADIR=$(pwd)/../DATA
+export DATADIR=$(dirname $(pwd))/DATA
 
 # MySQL connect 
 # substitute your definitions for the 6 variables
@@ -35,3 +35,13 @@ shopt -s expand_aliases		# allows to set alias from bash script
 							# alternatively, you may use ~/.my.cnf  
 alias my_sql="mysql -u ${SQLUSER} -p$SQLPW -h ${SQLHOST} --port $SQLPORT --prompt $SQLPROMPT $SQLDB"
  
+# 
+# [client8]
+# use --defaults-group-suffix=8 
+# user=uspeuser
+# password="NDT-CEDB"
+# prompt=uspe-mysql>
+# host="db4free.net"
+# database=uspedb
+# 
+

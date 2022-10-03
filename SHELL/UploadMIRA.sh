@@ -35,7 +35,7 @@ export LC_ALL=C   						# make sure we aren't in a multibyte locale
 function TSSettUpdate() {
 	SQL="update TestSeries set Setting=JSON_SET(Setting,\"$.$1.$2\",$3) where ID=$TSID;"
 	# echo $SQL
-	mysql --defaults-group-suffix=7 USPE -e "$SQL"
+	my_sql -e "$SQL"
 	[[ $? -ne 0 ]] && echo "Error inUpdateJson in TS $S $SQL" && exit
 }
 #
@@ -75,7 +75,7 @@ TSID=$2;
 TEID=2; # MIRA
 
 											# test if testSeries exists
-RET=$(mysql --defaults-group-suffix=7 USPE -s -e "select ID from TestSeries where ID=$TSID;")
+RET=$(my_sql -s -e "select ID from TestSeries where ID=$TSID;")
 [[ $? -ne 0 ]] && echo "Error in Query select ID from TestSeries where ID=$TSID; - abort" && exit
 [[ ${RET[0]} == "" ]] && echo "TestSeries $TSID does not exist - abort" && exit
 
@@ -86,7 +86,7 @@ for fn in $DATADIR/$TAD/$TSD/*.lbv;
 do
 	(( ! $HEAD )) && HEAD=1 && MIRAHEAD $fn;
 	TS=$(date -r $fn '+%Y-%m-%d %H:%M:%S')  # modtime of file fn
-	mysql --defaults-group-suffix=7 USPE -s -e "set @TSID=$TSID;set @TEID=$TEID;set @SEQ=$SEQ;\
+	my_sql -s -e "set @TSID=$TSID;set @TEID=$TEID;set @SEQ=$SEQ;\
 			set @FN=\"$(basename $fn)\";\
 			set @FP=\"${fn%/*}\"; \
 			set @TS=\"${TS}\"; \

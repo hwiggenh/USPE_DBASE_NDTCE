@@ -47,27 +47,28 @@ if ( ! ( Get-Variable 'SQLConnectString' -Scope 'Global' -ErrorAction 'ignore') 
 # FLUSH PRIVILEGES;
 # SHOW GRANTS FOR 'USPEuser'@'%';
 
+. ./SQLQUERY.ps1 
 # create tables
-mysql --defaults-group-suffix=7 USPE -e "source ../SQL/CreateExampleDB.sql"				
-# [[ $? -ne 0 ]] && echo "Error in CreateExampleDB.sql" && exit
+$SQLQ = ReadSqlScript ../SQL/CreateExampleDB.sql  
+write-host "length" $SQLQ.Count
+SQLCALL $SQLQ
+
 # define TestEquipment #1 A1220
-mysql --defaults-group-suffix=7 USPE  -e "source ../SQL/CreateExampleEquipment.sql"			
-# [[ $? -ne 0 ]] && echo "Error in CreateExampleEquipment.sql" && exit
-
+$SQLQ = ReadSqlScript ../SQL/CreateExampleEquipment.sql  
+SQLCALL $SQLQ
+exit
 # define TestAreas #1 and #2
-mysql --defaults-group-suffix=7 USPE -e "source  ../SQL/CreateExampleTestArea.sql"				
-# [[ $? -ne 0 ]] && echo "Error in CreateExampleTestArea.sql" && exit
-
-# create stored procedures
-# mysql --defaults-group-suffix=7 USPE -e "source ../SQL/StoredProcedures.sql"		
+$SQLQ = ReadSqlScript  ../SQL/CreateExampleTestArea.sql	
+write-host "here we go: " $SQLQ			
+SQLCALL $SQLQ
 
 # create DIRs for TA001 and TA002
 mkdir $DBDATA/TA001
 mkdir $DBDATA/TA002
 
 # define TestSeries #1 and #2
-mysql --defaults-group-suffix=7 USPE -e "source  ../SQL/CreateExampleTestSeries.sql"	
-# [[ $? -ne 0 ]] && echo "Error in CreateExampleTestSeries.sql" && exit
+$SQLQ = ReadSqlScript  ../SQL/CreateExampleTestSeries.sql
+SQLCALL $SQLQ
 
 # upload usdata short line scan MIRA
 mkdir $DBDATA/TA002/TS002

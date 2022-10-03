@@ -84,7 +84,7 @@ echo Notes: $Notes
 SQL="set @Setting = (select DeviceInfo from TestEquipment where ID = $TestEquipmentID);
 	set @Setting = (select JSON_SET(@Setting, '$.MAP',JSON_OBJECT('XMAP0',$XMAP0,'YMAP0',$YMAP0,'XMAPINC',$XMAPINC,'YMAPINC',$YMAPINC))); 	
 	insert into TestSeries values (NULL,\"$Name\",$TestAreaID,$TestEquipmentID,@Setting,$Notes);"
-RET=$(mysql --defaults-group-suffix=7 USPE -s -e "$SQL")	# call mysql DB USPE 
+RET=$(my_sql -s -e "$SQL")	# call mysql DB USPE 
 [[ $? -ne 0 ]] && echo "Error in query $SQL" && exit		# check error on call
 
 

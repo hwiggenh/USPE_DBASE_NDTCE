@@ -75,7 +75,7 @@ ReadAScan.sh $USPEID
 # upload usdata small area scan A1220 upload requires two parameters TAID and TSID
 mkdir $DATADIR/TA001/TS001
 # copy data to dir
-cp $DATADIR/RAW/A1020/*.raw $DATADIR/TA001/TS001/
+cp $DATADIR/RAW/A1220/*.raw $DATADIR/TA001/TS001/
 TAID=1;
 TSID=1
 UploadA1220.sh $TAID $TSID

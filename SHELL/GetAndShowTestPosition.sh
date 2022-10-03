@@ -43,7 +43,7 @@ SQL='select US.ID,TX,TY,RX,RY, TA.SizeX,TA.SizeY
 	where '$TAB'.ID='$ID';'
 
 # call mysql 
-RET=$(mysql --defaults-group-suffix=7 USPE -s -e "$SQL")
+RET=$(my_sql -s -e "$SQL")
 [[ $? -ne 0 ]] && echo "Error in query $SQL" && exit			# check error on call
 [[ $RET == "" ]] && echo Empty return for query: $SQL && exit	# return empty --> error in SQL
 

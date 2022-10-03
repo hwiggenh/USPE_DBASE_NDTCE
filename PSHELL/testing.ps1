@@ -1,37 +1,33 @@
-# write-host "hi " 
-Function Test-CommandExists
-{
- Param ($command)
- $oldPreference = $ErrorActionPreference
- $ErrorActionPreference = ‘stop’
- try {if(Get-Command $command){$true}}
- Catch {$false}
- Finally {$ErrorActionPreference=$oldPreference}
-} 
-write-host (Test-CommandExists SQLCALL)
-if (! (Test-CommandExists SQLCALL)) { . ./SQLQUERY.ps1}
-write-host (Test-CommandExists SQLCALL)
-
-
-exit
 
 #end function test-CommandExists
-$pfad = "../SQL/CreateExampleMIRAData.sql"
+$pfad = "../SQL/CreateExampleEquipment.sql"
 
 function ReadSqlScript([string]$pfad) 
 {
-	$res = [string]@()
+	$res = [string[]]@()
 	$s = Get-Content -Path $pfad
+	
 	# remove all after  "--"
+	
+	$fine = "";
 	foreach ($line in $s)
 	{
-		if ( $line.IndexOf('--') -eq 0 ) { continue }
-		if ( $line.IndexOf('--') -lt 0 ) { 
-			$res += $line
-		} else {
-			$res += $line.Substring(0, $line.IndexOf('--'))
-		}
+		# write-host	$line
+		if ($line -match "^quit") { break }
+		$line = [regex]::Replace($line, "--.*$","")
+		$line = [regex]::Replace($line, "#.*$","")
+		$fine = $($fine)+$($line)+" "
+		$fine = [regex]::Replace($fine,"\s+"," ")
+		if (! ($fine -match ".*; $")) { continue }
+
+		
+		write-host $fine
+		$res += $fine
+		$fine = ""
+		
 	}
+	write-host "res length: " $res.Count
+	return $res
 }
 ReadSqlScript $pfad
 # (Get-Content -Path "../SQL/CreateExampleMIRAData.sql" -Raw).Replace("`n"," ")

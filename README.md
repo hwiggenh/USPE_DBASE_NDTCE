@@ -79,6 +79,12 @@ TS&lt;n&gt;  TS&lt;n&gt;       TS&lt;n&gt; TS&lt;n&gt; TS&lt;n&gt;              
 </ul>
 
 <h4>MySQL installation</h4>
+Linux bash: 
+	mysql-client installation
+Linux Powershell:
+	wget https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-8.0.19-noinstall.zip
+Windows: Install-Module wget https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-8.0.19-noinstall.zip
+
 Three options for utilizing MySQL:
 <ul>
 <li>Local MySQL Installation: <br>MySQL (owned by Oracle) can be downloaded for free from <a href="https://www.mysql.com/downloads/" target="_blank">MySQL Download</a>.<br>Please follow the instructions on how to install the system on your computer
@@ -106,8 +112,10 @@ Three options for utilizing MySQL:
 
 <h4>Script Installation</h4>
 <h5>Script Installation Linux</h5>
+
 wget -O -  https://github.com/hwiggenh/USPE_DBASE_NDTCE/archive/main.tar.gz | tar xz
 <h5>Script Installation M$ Windows</h5>
+Install-Module -Name SimplySql
 
 <h3>Coordinate System</h3>
 It is necessary to define a coordinate system for the test device to enable a correct transformation of each transducer positions of an AScan into the <i>TestArea</i>. The transformation from the device onto the <i>TestArea</i> is executed upon upload.

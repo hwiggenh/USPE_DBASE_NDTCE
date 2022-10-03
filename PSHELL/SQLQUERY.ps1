@@ -18,13 +18,12 @@
  REVISION:  	2022-08-23 initial draft 
 ======================================================================== #>
 
-function SQLCALL([string]$SQLQIN)
+function SQLCALL([string[]]$SQLQIN)
 {
-$SQLQIN = $SQLQIN.Replace("`n"," ")					# remove line feeds in string
-$SQLQIN = [regex]::Replace($SQLQIN, "\s+"," ") 		# collapse whitespace chars to one space 
+# $SQLQIN = $SQLQIN.Replace("`n"," ")					# remove line feeds in string
+# $SQLQIN = [regex]::Replace($SQLQIN, "\s+"," ") 		# collapse whitespace chars to one space 
 
 Add-Type -Assembly /usr/local/mysql-connector-net-8.0.19/v4.8/MySql.Data.dll
-
 													# Connect to remote MySQL server using $SQLConnectString 
 $db_con = New-Object MySql.Data.MySqlClient.MySqlConnection
 $db_con.ConnectionString = $SQLConnectString 
@@ -39,10 +38,11 @@ $RES = @()											# init array for results
 $prep = $false										# set flag if prepare has been set
 
 													# split SQLQ on ";" and execute commands 
-foreach ( $SQLQ in  $SQLQIN.Split(";"))
+foreach ( $SQLQ in  $SQLQIN)		# .Split(";"))
 {
 	IF( [regex]::Match($SQL ,'^\s*;?\s*$').Success) { break }		# skip empty lines or containing only ";"
 	
+	write-host "SQLQ: " $SQLQ
 	$sql.CommandText = $SQLQ
 	switch ( $SQLQ.Split(" ")[0].ToUpper() )
 	{
@@ -77,6 +77,9 @@ foreach ( $SQLQ in  $SQLQIN.Split(";"))
 			}
 			$RES += $object
 		}
+	}
+	"CREATE" {
+		$RES += $sql.ExecuteNonQuery()
 	}
 	}
 }
