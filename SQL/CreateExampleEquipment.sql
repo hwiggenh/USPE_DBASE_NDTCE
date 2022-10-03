@@ -62,7 +62,7 @@ set @SE = '"Setting":{
 set @Notes = "ACS A1220 Example; Manual Location: Shelf A; Last calibation: 2021";
 
 set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");
-insert into TestEquipment values (NULL,"A1220","ACS A1220 Serial#XXXXX Inv#XXXX Purchased: 2022 Owner:Smith",@DF,@Notes);
+insert into TestEquipment values (NULL,"A1220","ACS A1220 Serial XXXXX Inv XXXX Purchased: 2022 Owner:Smith",@DF,@Notes);
 
  -- MIRA A1040 ==================================================================
 set @BD ='"BinData":{									
@@ -103,13 +103,15 @@ set @SE =  '"Setting":{
 	}';
 
 			
-set @Notes = "ACS A1040 Example; Manual Location: Shelf B; Last calibation: 2020";
+set @Notes = `ACS A1040 Example, Manual Location: Shelf B, Last calibation: 2020`; --here we go
 
+-- set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");
 set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");
 
-insert into TestEquipment values (NULL,"MIRA","ACS Model A1040 Serial#XXXXX Inv#XXXX Purchased: 2022 Owner:John Doe",@DF,@Notes);
+insert into TestEquipment values (NULL,"MIRA","ACS Model A1040 Serial XXXXX Inv XXXX Purchased: 2022 Owner:John Doe",@DF,@Notes);
+quit
 
-/* uncomment to include Mira3D ==================================
+/* uncomment to insert MIRA§d equipment
 -- "MIRA3D_LINEAR"   ================================================================== 
 set @BD ='	"BinData": {
 		"Order": "BEF",
@@ -282,4 +284,3 @@ set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");
 
 insert into TestEquipment values (NULL,"MIRA3DPro Matrix","ACS Model MIRA3DPro Matrix Serial#XXXXX Inv#XXXX Purchased: 2022 Owner:John Doe",@DF,@Notes);
 */
-quit

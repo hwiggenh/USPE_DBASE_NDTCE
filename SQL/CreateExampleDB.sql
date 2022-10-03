@@ -9,11 +9,14 @@
 
 create database if not exists uspedb;
 use uspedb;
+drop table if exists uspedb.TestEquipment;
+drop table if exists uspedb.TestArea;
+drop table if exists uspedb.TestSeries;
+drop table if exists uspedb.USPEData;
 
-SET FOREIGN_KEY_CHECKS = 0; 		-- needed when database already exists
+-- SET FOREIGN_KEY_CHECKS = 0; 		-- needed when database already exists
 
 -- table TestEquipment gives every Unit an unique number
-drop table if exists uspedb.TestEquipment;
 create table if not exists uspedb.TestEquipment (
 	ID				int UNSIGNED	NOT NULL PRIMARY KEY AUTO_INCREMENT, 	-- unique number used as reference
 	Name			varchar(50)		NOT NULL DEFAULT 'NoName',				-- free text
@@ -23,7 +26,6 @@ create table if not exists uspedb.TestEquipment (
 );
 
 -- table testarea describes a rectangular area on which the measurmenets are taken
-drop table if exists uspedb.TestArea;
 create table if not exists uspedb.TestArea (
 	ID				int UNSIGNED		NOT NULL PRIMARY KEY AUTO_INCREMENT,	-- unique number, used as reference
 	Name			varchar(50)			NOT NULL default 'NoName',				-- free text
@@ -35,7 +37,6 @@ create table if not exists uspedb.TestArea (
 );
 
 -- TestSeries hold collections of AScans on the SAME testArea and SAME TestEquipment Settings
-drop table if exists uspedb.TestSeries;
 create table if not exists uspedb.TestSeries (
 	ID				INT UNSIGNED	NOT NULL PRIMARY KEY AUTO_INCREMENT,		-- unique number, used as reference
 	Name			VARCHAR(100)    NOT NULL Default " ",						-- free text
@@ -45,11 +46,10 @@ create table if not exists uspedb.TestSeries (
 	Notes			varchar(1000) 	NOT NULL Default ''			-- free text
 );
 -- create index on  main columns
-create index idxTestAreaID on TestSeries(TestAreaID);			
-create index idxTestEquipmentID on TestSeries(TestEquipmentID);
+alter table TestSeries add index(TestAreaID);			
+alter table TestSeries add index(TestEquipmentID);
 
 -- uspedb_Data holds description of individual AScans
-drop table if exists uspedb.USPEData;
 create table if not exists uspedb.USPEData (
 	ID				INT UNSIGNED		NOT NULL PRIMARY KEY AUTO_INCREMENT,		-- unique number
 	TestSeriesID	INT UNSIGNED		NOT NULL, FOREIGN KEY (TestSeriesID) REFERENCES uspedb.TestSeries(ID) on delete cascade, -- reference to TestSeries
@@ -62,10 +62,10 @@ create table if not exists uspedb.USPEData (
 	FileInfo 		json				NOT NULL
 );
 -- create index on  main columns
-create index idxTimeStamp on USPEData(TimeStamp);
-create index idxTX on USPEData(TX);
-create index idxTY on USPEData(TY);
-create index idxRX on USPEData(RX);
-create index idxRY on USPEData(RY);
+alter table USPEData add index(TimeStamp);
+alter table USPEData add index(TX);
+alter table USPEData add index(TY);
+alter table USPEData add index(RX);
+alter table USPEData add index(RY);
 
 -- end of file
