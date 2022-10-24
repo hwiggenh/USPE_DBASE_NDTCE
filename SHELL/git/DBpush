@@ -2,7 +2,7 @@
 #
 # push CRACK to git
 #
-DBROOT="/home/herotto/code/USPE_DBASE_NDTCE"
+DBROOT=$HOME/code/USPE_DBASE_NDTCE
 cd $DBROOT
 
 echo -n "Enter Commit Message [ENTER]: "

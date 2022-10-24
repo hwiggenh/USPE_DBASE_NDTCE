@@ -56,11 +56,13 @@ SQLCALL $SQLQ
 # define TestEquipment #1 A1220
 $SQLQ = ReadSqlScript ../SQL/CreateExampleEquipment.sql  
 SQLCALL $SQLQ
-exit
+
 # define TestAreas #1 and #2
-$SQLQ = ReadSqlScript  ../SQL/CreateExampleTestArea.sql	
-write-host "here we go: " $SQLQ			
+$SQLQ = ReadSqlScript  ../SQL/CreateExampleTestArea.sql			
 SQLCALL $SQLQ
+
+# delete tree below $DBDATA/TA*
+rm -r $DBDATA/TA*
 
 # create DIRs for TA001 and TA002
 mkdir $DBDATA/TA001

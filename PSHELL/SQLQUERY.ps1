@@ -42,9 +42,9 @@ foreach ( $SQLQ in  $SQLQIN)		# .Split(";"))
 {
 	IF( [regex]::Match($SQL ,'^\s*;?\s*$').Success) { break }		# skip empty lines or containing only ";"
 	
-	write-host "SQLQ: " $SQLQ
+	write-host "SQLQ: " $SQLQ.TrimStart().Split(" ")[0].ToUpper() --> $SQLQ
 	$sql.CommandText = $SQLQ
-	switch ( $SQLQ.Split(" ")[0].ToUpper() )
+	switch ( $SQLQ.TrimStart().Split(" ")[0].ToUpper() )
 	{
 	"SET" {
 		if ( ! $prep ) 								# prepare called only on first SET
@@ -56,7 +56,9 @@ foreach ( $SQLQ in  $SQLQIN)		# .Split(";"))
 		$ssplit = $SQLQ.Split("@")[1]
 				# split at "="
 		$ssplit = $ssplit.Split("=")
+		write-host $ssplit
 		$sql.Parameters.AddWithValue($ssplit[0], $ssplit[1])
+		$sql.Parameters[$ssplit[0]].Value = $ssplit[1]
 	}
 	"UPDATE" {
 		$RES += $sql.ExecuteNonQuery()

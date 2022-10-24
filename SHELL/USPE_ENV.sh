@@ -22,11 +22,11 @@ export DATADIR=$(dirname $(pwd))/DATA
 
 # MySQL connect 
 # substitute your definitions for the 6 variables
-SQLUSER="uspeuser"			# user for USPE		use your username
+SQLUSER="USPEuser"			# user for USPE		use your username
 SQLPW="NDT-CEDB"			# password			use your password for DB 
 SQLDB="uspedb"				# DB name			use your DBname
 SQLPORT=3306				# port 				typ. 3306 
-SQLHOST="db4free.net"		# mysql host		for local installation use "localhost"
+SQLHOST="localhost"			# mysql host		for local installation use "localhost"
 SQLPROMPT="uspe\>\ "		# db prompt			sets the prompt when access DB interactively	
 
 

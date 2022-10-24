@@ -103,7 +103,7 @@ set @SE =  '"Setting":{
 	}';
 
 			
-set @Notes = `ACS A1040 Example, Manual Location: Shelf B, Last calibation: 2020`; --here we go
+set @Notes = 'ACS A1040 Example; Manual Location: Shelf B; Last calibation: 2020'; 
 
 -- set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");
 set @DF = replace(replace(concat("{",@BD,",",@DC,",",@SE,"}"),"\n",""),"\t","");

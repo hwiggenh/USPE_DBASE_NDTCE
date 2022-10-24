@@ -9,10 +9,10 @@
 
 create database if not exists uspedb;
 use uspedb;
+drop table if exists uspedb.USPEData;
+drop table if exists uspedb.TestSeries;
 drop table if exists uspedb.TestEquipment;
 drop table if exists uspedb.TestArea;
-drop table if exists uspedb.TestSeries;
-drop table if exists uspedb.USPEData;
 
 -- SET FOREIGN_KEY_CHECKS = 0; 		-- needed when database already exists
 

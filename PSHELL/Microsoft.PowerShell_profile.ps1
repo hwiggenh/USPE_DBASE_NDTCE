@@ -17,6 +17,13 @@ $SQLPORT=3306				# port 				typ. 3306
 $SQLHOST="Brix-Herb"		# mysql host		for local installation use "localhost"
 $SQLPROMPT="uspe\>\ "		# db prompt			sets the prompt when access DB interactively	
 
+$SQLUSER="USPEuser"			# user for USPE		use your username
+$SQLPW="NDT-CEDB"			# password			use your password for DB 
+$SQLDB="uspedb"				# DB name			use your DBname
+$SQLPORT=3306				# port 				typ. 3306 
+$SQLHOST="localhost"		# mysql host		for local installation use "localhost"
+$SQLPROMPT="uspe\>\ "		# db prompt			sets the prompt when access DB interactively	
+
 # create user USPEuser with create insert delete 
 # CREATE USER 'USPEuser'@'%' IDENTIFIED BY 'NDT-CEDB';
 # GRANT ALL PRIVILEGES ON uspedb .* TO 'USPEuser'@'%';

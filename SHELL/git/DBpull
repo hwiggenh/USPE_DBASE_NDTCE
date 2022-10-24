@@ -2,7 +2,7 @@
 #
 # pull CRACK from git
 #
-DBROOT="/home/herotto/code/USPE_DBASE_NDTCE"
+DBROOT=$HOME/code/USPE_DBASE_NDTCE
 #
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa_github

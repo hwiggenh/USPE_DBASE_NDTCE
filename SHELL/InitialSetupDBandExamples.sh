@@ -54,6 +54,9 @@ my_sql < ../SQL/CreateExampleTestArea.sql
 # create stored procedures
 my_sql < ../SQL/StoredProcedures.sql		
 
+# delete dirs below $DATADIR
+rm -r $DATADIR/TA*
+
 # create DIRs for TA001 and TA002
 mkdir $DATADIR/TA001
 mkdir $DATADIR/TA002

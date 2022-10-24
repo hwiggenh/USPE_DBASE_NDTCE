@@ -19,9 +19,6 @@ while creating unambiquous relations among the following:
 <li>Any combination of the above
 </ul>
 <li>Test location
-Cheers,
-Herbert
-
 <ul>
 <li>Position of each transducer within a rectangular area on a structure
 </ul>
